@@ -1,0 +1,43 @@
+header {
+    align-items: center;
+	justify-content: space-between;
+}
+footer {
+	height: 3rem;
+}
+header, footer {
+    display: flex;
+	color: white;
+	background-color: rgb(87, 194, 194);
+}
+header h1 {
+    padding-left: 2rem;
+    font-size: 2rem;
+}
+header ul {
+	padding-right: .2em;
+}
+header li {
+	margin-top: .5rem;
+	margin-right: 1.5rem;
+	list-style: none;
+}
+header button {
+	position: fixed;
+	height: 2%;
+	width: 10em;
+	border-radius: .5em;
+	top: .5em;
+	right: 1.2rem;
+}
+.top {
+	top: 0;
+}
+.down {
+	bottom: 0;
+}
+.fixed {
+	position: fixed;
+    right: 0;
+	width: 100%;
+}
