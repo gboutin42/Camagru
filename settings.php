@@ -1,27 +1,27 @@
 <?php
+	require_once 'functions' . DIRECTORY_SEPARATOR . 'functions.php';
+	connecting_session();
+	if (!array_key_exists('login', $_SESSION))
+		header('location: index.php');
 	$title	= "Settings";
-	$log	= "Log Out";
-	require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'Camagru' . DIRECTORY_SEPARATOR . 'functions' . DIRECTORY_SEPARATOR . 'debug.php';
-	require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'Camagru' . DIRECTORY_SEPARATOR . 'functions' . DIRECTORY_SEPARATOR . 'auth.php';
-	require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'Camagru' . DIRECTORY_SEPARATOR . 'functions' . DIRECTORY_SEPARATOR . 'functions.php';
-	require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'Camagru' . DIRECTORY_SEPARATOR . 'elements' . DIRECTORY_SEPARATOR . 'header.php';
+	require_once 'elements' . DIRECTORY_SEPARATOR . 'header.php';
 ?>
 
-<body>
-	<form action="" class="main" method="POST">
-		<p>Change your settings !</p>
-		<input type="email" name="mail" placeholder="xyz@mail.com"><br>
-		<input type="text" name="login" placeholder="your login" value=""><br>
-		<input type="password" name="old_pwd" placeholder="old password" value=""><br>
-		<input type="password" name="new_pwd" placeholder="new password" value=""><br>
-		<input type="password" name="checkin_pwd" placeholder="confirm password" value=""><br>
-		<input type="checkbox" name="notif[]" id="likes" value="1" <?= checkbox(1, 'notif', $_POST) ?>><label for="likes">Receive notification for Likes</label><br>
-		<input type="checkbox" name="notif[]" id="comments" value="2" <?= checkbox(2, 'notif', $_POST) ?>><label for="comments">Receive notification for Comments</label><br>
-		<button type="submit">click here Mother Fucker</button><br>
-	</form>
-</body>
-<?php dump("Connected", is_connected(), 7) ?>
-<?php dump("_GET", $_GET, 0) ?>
-<?php dump("_POST", $_POST, 0) ?>
+<form>
+	<p>You can change your settings here !</p>
+	<div id='error' class="error text"></div>
+	<input type="email" id="mail" name="mail" placeholder="xyz@mail.com" value="<?= $_SESSION['mail'] ?>"><br>
+	<input type="text" id="login" name="login" placeholder="your login" value="<?= $_SESSION['login'] ?>"><br>
+	<input type="password" id="old_pwd" name="old_pwd" placeholder="old password" value="" autofocus><br>
+	<input type="password" id="new_pwd" name="new_pwd" placeholder="new password" value=""><br>
+	<input type="password" id="checkin_pwd" name="checkin_pwd" placeholder="confirm password" value=""><br>
+	<button id="submit_settings" type="submit">Settings Changes</button><br>
+	<input type="checkbox" id="notif_like" name="notif_like" value="<?= $_SESSION['notif_like'] ?>" <?= checkbox('notif_like') ?>><label for="notif_like">Receive notification for Likes</label><br>
+	<input type="checkbox" id="notif_comments" name="notif_comments" value="<?= $_SESSION['notif_comments'] ?>"<?= checkbox('notif_comments') ?>><label for="notif_comments">Receive notification for Comments</label><br>
+	<div class=" delete">
+		<a href="functions/delete_account.php" class="error"><img src="img/delete.png" alt="trash" titlte="trash" class="icon">Delete Account</a>
+	</div>
+</form>
+<script type="text/javascript" src="js/send_settings.js"></script>
 
-<?php require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'Camagru' . DIRECTORY_SEPARATOR . 'elements' . DIRECTORY_SEPARATOR . 'footer.php'; ?>
+<?php require_once 'elements' . DIRECTORY_SEPARATOR . 'footer.php'; ?>

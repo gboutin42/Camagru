@@ -1,25 +1,20 @@
 <?php
+	require_once 'functions' . DIRECTORY_SEPARATOR . 'functions.php';
+	connecting_session();
 	$title = "Log In";
-	require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'Camagru' . DIRECTORY_SEPARATOR . 'elements' . DIRECTORY_SEPARATOR . 'header.php';
-	require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'Camagru' . DIRECTORY_SEPARATOR . 'functions' . DIRECTORY_SEPARATOR . 'auth.php';
-	log_in();
+	require_once 'elements' . DIRECTORY_SEPARATOR . 'header.php';
 ?>
 
-
-<form action="" method="POST" class="main">
-	<?php if ($_SESSION['error']): ?>
+<form action="functions/auth.php" method="POST">
+	<p class="error text"><?php display_error();?> </p>
 	<div>
-		<?= $_SESSION['error'] ?>
-	</div>
-	<?php endif; ?><div>
-		<input type="text" name="username" placeholder="User Name">
+		<input type="text" name="username" placeholder="Username" pattern=".{3,}" required autofocus>
 	</div>
 	<div>
-		<input type="password" name="pwd" placeholder="Password">
+		<input type="password" name="pwd" placeholder="Password" pattern=".{8,}" required>
 	</div>
+	<div><a href="forgot_password.php">forgot password</a></div>
 	<button type="submit">Connection</button>
 </form>
-
-<?php dump("Connected ?", is_connected(), 7) ?>
-
-<?php require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'Camagru' . DIRECTORY_SEPARATOR . 'elements' . DIRECTORY_SEPARATOR . 'footer.php'; ?>
+	
+<?php require_once 'elements' . DIRECTORY_SEPARATOR . 'footer.php'; ?>

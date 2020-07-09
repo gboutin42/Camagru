@@ -1,8 +1,6 @@
 <?php
-	session_start();
-	unset($_SESSION['log']);
-	unset($_SESSION['login']);
-	unset($_SESSION['password']);
+	require_once 'functions' . DIRECTORY_SEPARATOR . 'functions.php';
+	connecting_session();
 	session_destroy();
 	header('Location: index.php');
 ?>

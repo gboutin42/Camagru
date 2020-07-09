@@ -7,7 +7,7 @@ try {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $sql = $DB_DROP . "IF EXISTS " . $DB_NAME;
     $pdo->exec($sql);
-    echo "Database DROP successfully";
+    echo "Database DROP successfully<br/>";
     }
 catch (PDOException $error) {
     die("ERROR DROP DB:" . $error->getMessage() . "Aborting process");

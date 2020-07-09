@@ -1,5 +1,14 @@
 <?php
-	function logOrNot(string $log): string {
+	connecting_session();
+	
+	function connecting_session() {
+		if(!isset($_SESSION['connexion_start'])) {
+			session_start();
+			$_SESSION['connexion_start'] = true;
+		}
+	}
+
+	function logOrNot($log) {
 		if (isset($log) && $log === "Log In"):
 			return ("log_in.php");
 		elseif (isset($log) && $log === "Log Out"):
@@ -9,17 +18,18 @@
 		endif;
 	}
 
-	function checkbox(string $value, string $name, array $data): string {
-		if(isset($data[$name]) && in_array($value, $data[$name]))
+	function checkbox(string $name): string {
+		if ($_SESSION[$name] == 1) {
 			return 'checked';
-		return '';
+		} else {
+			return '';
+		}
 	}
 
-	function pictures(array $data): string {
-		if (isset($data['upload'])) {
-			return ($data['upload']);
+	function display_error() {
+		if (array_key_exists('error', $_SESSION)) {
+			echo $_SESSION['error'];
+			$_SESSION['error'] = NULL;
 		}
-		else
-			return '';
 	}
 ?>

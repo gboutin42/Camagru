@@ -1,43 +1,66 @@
-header {
-    align-items: center;
-	justify-content: space-between;
-}
-footer {
-	height: 3rem;
-}
+/* --- common part to header and footer --- */
 header, footer {
-    display: flex;
+	display: flex;
 	color: white;
+	padding: 10px;
 	background-color: rgb(87, 194, 194);
 }
+.container {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+/* --- header's part --- */
+header {
+	margin-bottom: 2%;
+	justify-content: space-between;
+}
 header h1 {
-    padding-left: 2rem;
-    font-size: 2rem;
+	padding-left: 2rem;
 }
 header ul {
-	padding-right: .2em;
+	font-size: 1.2rem;
+	padding-right: 1em;
 }
 header li {
-	margin-top: .5rem;
-	margin-right: 1.5rem;
+	margin: auto;
 	list-style: none;
 }
-header button {
-	position: fixed;
-	height: 2%;
-	width: 10em;
-	border-radius: .5em;
-	top: .5em;
-	right: 1.2rem;
+
+/* --- footer's part --- */
+footer {
+	margin-top: 2%;
+	margin-bottom: -10px;
 }
-.top {
-	top: 0;
-}
-.down {
-	bottom: 0;
-}
-.fixed {
-	position: fixed;
-    right: 0;
+footer div {
 	width: 100%;
+	display: flex;
+	justify-content: space-around;
+}
+footer div div {
+	width: 30%;
+	margin: auto;
+}
+footer div div p {
+	text-align: center;
+}
+footer img {
+	padding: 1%;
+	width: 8%;
+}
+
+section {
+	display: flex;
+	margin: auto;
+	justify-content: space-around;
+}
+aside {
+	width: 15%;
+	height: 27em;
+	padding: 3%;
+	overflow: scroll;
+}
+aside div{
+	margin: 3%;
 }
